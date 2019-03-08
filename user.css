@@ -1,0 +1,36 @@
+body
+{
+background-color: brown;
+}
+.formulaire
+{
+background-color: dimgray;
+width: 300px;
+height: 280px;
+display:flex;
+flex-direction: column;
+border-radius: 18px;    
+}
+.green
+{
+color: darkslategray;  
+font-size: 20px;
+}
+
+.green:hover 
+{
+background:no-repeat;
+background-color:darkolivegreen ;
+}
+
+.blue
+{
+color:blue;
+font-size: 20px;
+}
+
+.blue:hover 
+{
+background:no-repeat;
+background-color: dodgerblue ;
+}
