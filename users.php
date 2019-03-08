@@ -48,14 +48,15 @@
                 $recuperation_des_utilisateurs=$request->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <!--"3e AFFICHER MES VALEURS + CREATION DES BOUTONS DELETE & UPDATE-->
-                <?php foreach ($recuperation_des_utilisateurs as $key=> $value ):?>
-                
-                <div><?php echo $value['id'] ." ---". $value['nom'] ." --- ". $value['prenom'] ." --- ". $value['email'] ?></div>
-                <input type="button" value="DELETE" onclick="delete(<?php echo $value['id'];?>">;
-                <input type="button" value="READ" onclick="read(<?php echo $value['id'];?>">;
-                
-                <?php endforeach; ?>
             
+                    <?php foreach ($recuperation_des_utilisateurs as $key=> $value ):?>
+                    
+                    <div id=<?php echo $value['id'];?>><?php echo $value['id'] ." ---". $value['nom'] ." --- ". $value['prenom'] ." --- ". $value['email'] ?>
+                    <input type="button" value="DELETE" onclick="delete_user(<?php echo $value['id'];?>)">;
+                    <input type="button" value="READ" onclick="read_user (<?php echo $value['id'];?>)">;
+                    </div>
+                    <?php endforeach; ?>
+               
         </div>
         
     
