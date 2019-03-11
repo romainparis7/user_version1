@@ -30,7 +30,7 @@
         </div>    
         <!----bouton create et update-->         
         <input class="green" type="submit" value="create" onclick="create_user()">
-        <input class="blue" type="submit" value="update" onclick="create_user()">
+        
     
         <!--CREATION DIV POUR AFFICHER LA LIST DES UTILISATEUR DE LA BDD-->
         <div  id="list">
@@ -51,9 +51,17 @@
             
                     <?php foreach ($recuperation_des_utilisateurs as $key=> $value ):?>
                     
-                    <div id=<?php echo $value['id'];?>><?php echo $value['id'] ." ---". $value['nom'] ." --- ". $value['prenom'] ." --- ". $value['email'] ?>
-                    <input type="button" value="DELETE" onclick="delete_user(<?php echo $value['id'];?>)">;
-                    <input type="button" value="READ" onclick="read_user (<?php echo $value['id'];?>)">;
+                    <div id=<?php echo $value['id'];?>>
+                    <span>
+                        <?php echo $value['id'] ?>
+                        <i id="nom_<?php echo $value['id'] ?>"><?php echo $value['nom'] ?></i>
+                        <i id="prenom_<?php echo $value['id'] ?>"><?php echo $value['prenom'] ?></i>
+                        <i id="email_<?php echo $value['id'] ?>"><?php echo $value['email'] ?></i>
+                    </span>
+                    <input type="button" class="red"  value="DELETE" onclick="delete_user(<?php echo $value['id'];?>)">;
+                    <input type="button" class="blue" value="UPDATE" onclick="update_user(<?php echo $value['id'];?>)">
+                    <input type="button" class="green"value="READ"   onclick="read_user(<?php echo $value['id'];?>)">;
+                    <input type="hidden" id="id_hidden" name="caché" />
                     </div>
                     <?php endforeach; ?>
                

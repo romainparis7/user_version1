@@ -52,13 +52,8 @@ xhr.send(data);
 
  function delete_user(delete_id)
  {
-   // AJAX : 1ere étape : création de l'objet XMLHttpRequest
-  var xhr = new XMLHttpRequest();
-  // AJAX : 2éme étape : création de la fonction de rappel
-  // cette fonction n'est appellée qu'aprés avoir reçu la réponse du serveur
-  xhr.onreadystatechange= function(){
-  // on traite le cas ou la requête à finie d'être initialisée 
-  // et que la réponse du serveur est valide
+  var xhr = new XMLHttpRequest();// AJAX : 1ere étape : création de l'objet XMLHttpRequest
+  xhr.onreadystatechange= function(){   // AJAX : 2éme étape : création de la fonction de rappel
   if (xhr.readyState == 4 && xhr.status == 200) {
 
     var parent = document.getElementById("list"); // récupération du noeud parent
@@ -107,25 +102,42 @@ xhr.send(data);
 
   function update_user(update_id)
   {
-    /* //création de l'objet
-    var xhr = new XMLHttpRequest();
-    //création fonction de rappel
-    xhr.onreadystatechange= function(){
-    if (xhr.readyState == 4 && xhr.status == 200) {
+              //création de l'objet
+              var xhr = new XMLHttpRequest();
+              //création fonction de rappel
+              xhr.onreadystatechange= function(){
+              if (xhr.readyState == 4 && xhr.status == 200) 
+            {
 
+              //ajax receptionne la réponse du DELETE_USER.PHP soit le serveur
+              var user=JSON.parse(xhr.responseText);
+              var nom=user.nom;
+              var prenom=user.prenom;
+              var email=user.email;
 
+              var elementNom=document.getElementById('nom_'+update_id);
+              var elementPrenom=document.getElementById('prenom_'+update_id);
+              var elementEmail=document.getElementById('email_'+update_id);
 
+              elementNom.innerHTML=nom;
+              elementPrenom.innerHTML=prenom;
+              elementEmail.innerHTML=email;
+            }
+  };
 
-     }
-     };
-
+    // REQUETE PHP
     // LIEN AVEC UPDATE_USER.PHP 
     xhr.open('POST','update_user.php');
     //ENVOI DES DONNEES À READ_USER.PHP
     var data = new FormData();
-    data.append('id', update_id);
+    //data.append('id', document.getElementById("id").value);
+    //data.append('id_hidden', document.getElementById("id_hidden").value);
+    data.append('id',update_id);
+    data.append('name', document.getElementById("name").value);
+    data.append('lastName', document.getElementById("lastName").value);
+    data.append('email', document.getElementById("email").value);
     //ENVOI DE LA REQUÊTE
     xhr.send(data);
-    */ }
+  }
  
   
